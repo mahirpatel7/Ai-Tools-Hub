@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[dev]
+  command = "npm start"   # how to start your dev server
+  targetPort = 3000       # CRA runs on 3000
+  port = 8888             # Netlify Dev will proxy on http://localhost:8888

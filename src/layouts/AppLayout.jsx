@@ -1,31 +1,52 @@
-import { Outlet, Link } from "react-router-dom";
+// src/layouts/AppLayout.jsx
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { Box, Toolbar } from "@mui/material";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
 const AppLayout = () => {
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
-      {/* Sidebar placeholder */}
-      <aside
-        style={{
-          width: 240,
-          borderRight: "1px solid #eee",
-          padding: "1rem",
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column", // navbar on top, rest below
+        minHeight: "100vh",
+        bgcolor: "background.default",
+        color: "text.primary",
+      }}
+    >
+      {/* Top Navbar */}
+      <Navbar />
+
+      {/* Space under fixed AppBar (so content doesn't go under navbar) */}
+      <Toolbar sx={{ minHeight: 56 }} />
+
+      {/* Main area: sidebar + page content */}
+      <Box
+        sx={{
+          display: "flex",
+          flex: 1,
         }}
       >
-        <h2>AI Tools Hub</h2>
-        <nav>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/tools">All Tools</Link></li>
-          </ul>
-        </nav>
-      </aside>
+        {/* Left sidebar */}
+        <Sidebar />
 
-      {/* Main content */}
-      <main style={{ flex: 1, padding: "1.5rem" }}>
-        <Outlet />
-      </main>
-    </div>
+        {/* Main routed content */}
+        <Box
+          component="main"
+          sx={{
+            flex: 1,
+            p: 3,
+            boxSizing: "border-box",
+          }}
+        >
+          <Outlet />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
 export default AppLayout;
+
