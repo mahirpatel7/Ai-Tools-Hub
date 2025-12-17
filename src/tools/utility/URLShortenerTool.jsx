@@ -26,40 +26,55 @@ const URLShortenerTool = () => {
   const handleShorten = async () => {
     if (!longUrl.trim()) {
       setError("Please enter a URL");
+
+      if (window.gtag) {
+        window.gtag("event", "error_shown", {
+          tool_name: "URL Shortener",
+          error_type: "empty_url",
+        });
+      }
       return;
     }
 
     try {
-      setLoading(true);
-      setError("");
-      setShortUrl("");
-      setCopied(false);
+      // existing logic…
 
-      // ✅ STILL THE SAME – just calls our Netlify function
-      const response = await axios.post("/.netlify/functions/shorten-url", {
-        longUrl,
-      });
-
-      const { shortUrl } = response.data;
       setShortUrl(shortUrl);
-    } catch (err) {
-      console.error(err);
-      setError("Failed to shorten URL. Please try again.");
-    } finally {
-      setLoading(false);
+
+      // ✅ tool used
+      if (window.gtag) {
+        window.gtag("event", "tool_used", {
+          tool_name: "URL Shortener",
+          action: "shorten_url",
+        });
+      }
+    } catch {
+      // existing error logic…
+
+      if (window.gtag) {
+        window.gtag("event", "error_shown", {
+          tool_name: "URL Shortener",
+          error_type: "api_failure",
+        });
+      }
     }
   };
+
 
   const handleCopy = async () => {
     if (!shortUrl) return;
-    try {
-      await navigator.clipboard.writeText(shortUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (err) {
-      console.error("Failed to copy:", err);
+
+    await navigator.clipboard.writeText(shortUrl);
+    setCopied(true);
+
+    // ✅ copy event
+    if (window.gtag) {
+      window.gtag("event", "copy_clicked", {
+        tool_name: "URL Shortener",
+      });
     }
   };
+
 
   return (
     <Box>

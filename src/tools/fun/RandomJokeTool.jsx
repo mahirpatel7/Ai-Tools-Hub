@@ -29,12 +29,22 @@ const JOKES = [
   },
 ];
 
+
+
 const RandomJokeTool = () => {
   const [joke, setJoke] = useState(null);
 
   const handleNewJoke = () => {
     const index = Math.floor(Math.random() * JOKES.length);
     setJoke(JOKES[index]);
+
+    // ✅ STEP 9.5 — track action
+    if (window.gtag) {
+      window.gtag("event", "tool_used", {
+        tool_name: "Random Joke",
+        action: "generate_joke",
+      });
+    }
   };
 
   return (

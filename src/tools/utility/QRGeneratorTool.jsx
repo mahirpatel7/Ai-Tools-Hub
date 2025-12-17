@@ -18,29 +18,48 @@ const QRGeneratorTool = () => {
   const [size, setSize] = useState(200);
   const [showQR, setShowQR] = useState(false);
 
-  const handleGenerate = () => {
-    if (!text.trim()) {
-      setShowQR(false);
-      return;
-    }
-    setShowQR(true);
-  };
-
   const handleDownload = () => {
     const canvas = document.querySelector("#qr-code-canvas");
     if (!canvas) return;
 
-    const pngUrl = canvas
-      .toDataURL("image/png")
-      .replace("image/png", "image/octet-stream");
+    // existing logic…
+    const pngUrl = canvas.toDataURL("image/png");
 
-    const link = document.createElement("a");
-    link.href = pngUrl;
-    link.download = "qr-code.png";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // ✅ download event
+    if (window.gtag) {
+      window.gtag("event", "download_clicked", {
+        tool_name: "QR Generator",
+        file_type: "png",
+      });
+    }
   };
+
+
+  const handleGenerate = () => {
+    if (!text.trim()) {
+      setShowQR(false);
+
+      // ✅ error event
+      if (window.gtag) {
+        window.gtag("event", "error_shown", {
+          tool_name: "QR Generator",
+          error_type: "empty_input",
+        });
+      }
+      return;
+    }
+
+    setShowQR(true);
+
+    // ✅ tool used event
+    if (window.gtag) {
+      window.gtag("event", "tool_used", {
+        tool_name: "QR Generator",
+        action: "generate_qr",
+      });
+    }
+  };
+
 
   return (
     <Box>

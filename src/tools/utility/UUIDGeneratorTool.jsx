@@ -20,22 +20,35 @@ const UUIDGeneratorTool = () => {
   const [uuid, setUuid] = useState("");
   const [copied, setCopied] = useState(false);
 
+  const handleCopy = async () => {
+    if (!uuid) return;
+
+    await navigator.clipboard.writeText(uuid);
+    setCopied(true);
+
+    // ✅ copy event
+    if (window.gtag) {
+      window.gtag("event", "copy_clicked", {
+        tool_name: "UUID Generator",
+      });
+    }
+  };
+
+
   const handleGenerate = () => {
     const newUuid = uuidv4();
     setUuid(newUuid);
     setCopied(false);
-  };
 
-  const handleCopy = async () => {
-    if (!uuid) return;
-    try {
-      await navigator.clipboard.writeText(uuid);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
-    } catch (err) {
-      console.error("Failed to copy UUID:", err);
+    // ✅ tool used
+    if (window.gtag) {
+      window.gtag("event", "tool_used", {
+        tool_name: "UUID Generator",
+        action: "generate_uuid",
+      });
     }
   };
+
 
   return (
     <Box>
