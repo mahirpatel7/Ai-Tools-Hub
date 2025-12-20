@@ -28,14 +28,17 @@
 
   <url>
     <loc>https://aitoolify.netlify.app/privacy-policy</loc>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://aitoolify.netlify.app/terms-of-service</loc>
+    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://aitoolify.netlify.app/contact</loc>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
