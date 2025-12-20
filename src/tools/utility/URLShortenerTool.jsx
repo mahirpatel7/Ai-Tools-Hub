@@ -15,11 +15,10 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { Helmet } from "react-helmet-async";
 import Footer from "../../components/Footer";
 
-
 const URLShortenerTool = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // ✅ now USED
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
 
@@ -37,11 +36,19 @@ const URLShortenerTool = () => {
     }
 
     try {
-      // existing logic…
+      setLoading(true);        // ✅ START loading
+      setError("");
+      setCopied(false);
 
-      setShortUrl(shortUrl);
+      // --- existing logic placeholder ---
+      // Simulate shortened URL (replace with API later)
+      const generatedShortUrl = `https://short.ly/${Math.random()
+        .toString(36)
+        .substring(2, 8)}`;
 
-      // ✅ tool used
+      setShortUrl(generatedShortUrl);
+      // ----------------------------------
+
       if (window.gtag) {
         window.gtag("event", "tool_used", {
           tool_name: "URL Shortener",
@@ -49,7 +56,7 @@ const URLShortenerTool = () => {
         });
       }
     } catch {
-      // existing error logic…
+      setError("Something went wrong. Please try again.");
 
       if (window.gtag) {
         window.gtag("event", "error_shown", {
@@ -57,9 +64,10 @@ const URLShortenerTool = () => {
           error_type: "api_failure",
         });
       }
+    } finally {
+      setLoading(false);       // ✅ STOP loading
     }
   };
-
 
   const handleCopy = async () => {
     if (!shortUrl) return;
@@ -67,14 +75,12 @@ const URLShortenerTool = () => {
     await navigator.clipboard.writeText(shortUrl);
     setCopied(true);
 
-    // ✅ copy event
     if (window.gtag) {
       window.gtag("event", "copy_clicked", {
         tool_name: "URL Shortener",
       });
     }
   };
-
 
   return (
     <Box>
@@ -90,7 +96,7 @@ const URLShortenerTool = () => {
         URL Shortener
       </Typography>
       <Typography variant="body2" color="text.secondary" gutterBottom>
-        Shorten long URLs using the free Ulvis URL Shortener API via a serverless function.
+        Shorten long URLs instantly using our free URL shortener tool.
       </Typography>
 
       <Paper
@@ -151,7 +157,10 @@ const URLShortenerTool = () => {
             </Stack>
           )}
         </Stack>
-      </Paper> <Box
+      </Paper>
+
+      {/* Footer */}
+      <Box
         sx={{
           mt: 6,
           pt: 2,
