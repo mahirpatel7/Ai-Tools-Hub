@@ -14,6 +14,7 @@ import {
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { v4 as uuidv4 } from "uuid";
 import { Helmet } from "react-helmet-async";
+import Footer from "../../components/Footer";
 
 
 const UUIDGeneratorTool = () => {
@@ -106,6 +107,18 @@ const UUIDGeneratorTool = () => {
           )}
         </Stack>
       </Paper>
+       <Box
+      sx={{
+        mt: 6,
+        pt: 2,
+        borderTop: "1px solid",
+        borderColor: "divider",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Footer />
+    </Box>
     </Box>
   );
 };

@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { QRCodeCanvas } from "qrcode.react";
 import { Helmet } from "react-helmet-async";
+import Footer from "../../components/Footer";
 
 
 const QRGeneratorTool = () => {
@@ -144,6 +145,261 @@ const QRGeneratorTool = () => {
           )}
         </Stack>
       </Paper>
+      <Helmet>
+        <title>Free QR Code Generator Online – Create QR Codes Instantly</title>
+        <meta
+          name="description"
+          content="Generate QR codes online for URLs, text, WiFi and more. Free, fast and secure QR code generator with download support."
+        />
+      </Helmet>
+
+      <Typography variant="h5" gutterBottom>
+        QR Code Generator
+      </Typography>
+      <Typography variant="body2" color="text.secondary" gutterBottom>
+        Enter any text or URL and generate a QR code. You can also download it
+        as an image.
+      </Typography>
+
+      <Paper
+        elevation={0}
+        sx={{
+          mt: 3,
+          p: 2.5,
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Stack spacing={3}>
+          {/* Input text */}
+          <TextField
+            label="Text or URL"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            fullWidth
+            placeholder="https://example.com or any text"
+          />
+
+          {/* Size slider */}
+          <Box>
+            <Typography variant="body2" gutterBottom>
+              Size: {size}px
+            </Typography>
+            <Slider
+              min={100}
+              max={400}
+              value={size}
+              onChange={(_, value) => setSize(value)}
+              valueLabelDisplay="auto"
+            />
+          </Box>
+
+          {/* Generate button */}
+          <Button variant="contained" onClick={handleGenerate}>
+            Generate QR Code
+          </Button>
+
+          {/* Preview + download */}
+          {showQR && (
+            <Stack spacing={2} alignItems="center">
+              <Box
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <QRCodeCanvas
+                  id="qr-code-canvas"
+                  value={text}
+                  size={size}
+                  includeMargin={true}
+                />
+              </Box>
+              <Button variant="outlined" onClick={handleDownload}>
+                Download PNG
+              </Button>
+            </Stack>
+          )}
+        </Stack>
+      </Paper>
+      <Helmet>
+        <title>Free QR Code Generator Online – Create QR Codes Instantly</title>
+        <meta
+          name="description"
+          content="Generate QR codes online for URLs, text, WiFi and more. Free, fast and secure QR code generator with download support."
+        />
+      </Helmet>
+
+      <Typography variant="h5" gutterBottom>
+        QR Code Generator
+      </Typography>
+      <Typography variant="body2" color="text.secondary" gutterBottom>
+        Enter any text or URL and generate a QR code. You can also download it
+        as an image.
+      </Typography>
+
+      <Paper
+        elevation={0}
+        sx={{
+          mt: 3,
+          p: 2.5,
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Stack spacing={3}>
+          {/* Input text */}
+          <TextField
+            label="Text or URL"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            fullWidth
+            placeholder="https://example.com or any text"
+          />
+
+          {/* Size slider */}
+          <Box>
+            <Typography variant="body2" gutterBottom>
+              Size: {size}px
+            </Typography>
+            <Slider
+              min={100}
+              max={400}
+              value={size}
+              onChange={(_, value) => setSize(value)}
+              valueLabelDisplay="auto"
+            />
+          </Box>
+
+          {/* Generate button */}
+          <Button variant="contained" onClick={handleGenerate}>
+            Generate QR Code
+          </Button>
+
+          {/* Preview + download */}
+          {showQR && (
+            <Stack spacing={2} alignItems="center">
+              <Box
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <QRCodeCanvas
+                  id="qr-code-canvas"
+                  value={text}
+                  size={size}
+                  includeMargin={true}
+                />
+              </Box>
+              <Button variant="outlined" onClick={handleDownload}>
+                Download PNG
+              </Button>
+            </Stack>
+          )}
+        </Stack>
+      </Paper>
+      <Helmet>
+        <title>Free QR Code Generator Online – Create QR Codes Instantly</title>
+        <meta
+          name="description"
+          content="Generate QR codes online for URLs, text, WiFi and more. Free, fast and secure QR code generator with download support."
+        />
+      </Helmet>
+
+      <Typography variant="h5" gutterBottom>
+        QR Code Generator
+      </Typography>
+      <Typography variant="body2" color="text.secondary" gutterBottom>
+        Enter any text or URL and generate a QR code. You can also download it
+        as an image.
+      </Typography>
+
+      <Paper
+        elevation={0}
+        sx={{
+          mt: 3,
+          p: 2.5,
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Stack spacing={3}>
+          {/* Input text */}
+          <TextField
+            label="Text or URL"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            fullWidth
+            placeholder="https://example.com or any text"
+          />
+
+          {/* Size slider */}
+          <Box>
+            <Typography variant="body2" gutterBottom>
+              Size: {size}px
+            </Typography>
+            <Slider
+              min={100}
+              max={400}
+              value={size}
+              onChange={(_, value) => setSize(value)}
+              valueLabelDisplay="auto"
+            />
+          </Box>
+
+          {/* Generate button */}
+          <Button variant="contained" onClick={handleGenerate}>
+            Generate QR Code
+          </Button>
+
+          {/* Preview + download */}
+          {showQR && (
+            <Stack spacing={2} alignItems="center">
+              <Box
+                sx={{
+                  p: 2,
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                }}
+              >
+                <QRCodeCanvas
+                  id="qr-code-canvas"
+                  value={text}
+                  size={size}
+                  includeMargin={true}
+                />
+              </Box>
+              <Button variant="outlined" onClick={handleDownload}>
+                Download PNG
+              </Button>
+            </Stack>
+          )}
+        </Stack>
+      </Paper>
+      <Box
+        sx={{
+          mt: 6,
+          pt: 2,
+          borderTop: "1px solid",
+          borderColor: "divider",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <Footer />
+      </Box>
     </Box>
   );
 };

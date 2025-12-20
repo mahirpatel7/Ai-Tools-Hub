@@ -1,42 +1,51 @@
 // src/layouts/AppLayout.jsx
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Box, Toolbar } from "@mui/material";
+import { Box } from "@mui/material";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+
+const NAVBAR_HEIGHT = 56;
 
 const AppLayout = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column", // navbar on top, rest below
-        minHeight: "100vh",
+        height: "100vh",
+        overflow: "hidden",
         bgcolor: "background.default",
-        color: "text.primary",
       }}
     >
-      {/* Top Navbar */}
+      {/* Fixed Navbar */}
       <Navbar />
 
-      {/* Space under fixed AppBar (so content doesn't go under navbar) */}
-      <Toolbar sx={{ minHeight: 56 }} />
-
-      {/* Main area: sidebar + page content */}
+      {/* Layout below navbar */}
       <Box
         sx={{
           display: "flex",
-          flex: 1,
+          height: `calc(100vh)`,
+          pt: `${NAVBAR_HEIGHT}px`, // 🔑 OFFSET FOR FIXED NAVBAR
         }}
       >
-        {/* Left sidebar */}
-        <Sidebar />
+        {/* Sidebar */}
+        <Box
+          sx={{
+            width: 260,
+            borderRight: "1px solid",
+            borderColor: "divider",
+            overflow: "hidden",
+            zIndex: 1,
+          }}
+        >
+          <Sidebar />
+        </Box>
 
-        {/* Main routed content */}
+        {/* Main content */}
         <Box
           component="main"
           sx={{
             flex: 1,
+            overflowY: "auto",
             p: 3,
             boxSizing: "border-box",
           }}
@@ -49,4 +58,3 @@ const AppLayout = () => {
 };
 
 export default AppLayout;
-

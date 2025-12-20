@@ -8,6 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { Helmet } from "react-helmet-async";
+import Footer from "../../components/Footer";
 
 
 const JOKES = [
@@ -91,6 +92,18 @@ const RandomJokeTool = () => {
           )}
         </Stack>
       </Paper>
+       <Box
+      sx={{
+        mt: 6,
+        pt: 2,
+        borderTop: "1px solid",
+        borderColor: "divider",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Footer />
+    </Box>
     </Box>
   );
 };

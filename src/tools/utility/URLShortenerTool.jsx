@@ -14,6 +14,7 @@ import {
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import Footer from "../../components/Footer";
 
 
 const URLShortenerTool = () => {
@@ -151,7 +152,18 @@ const URLShortenerTool = () => {
             </Stack>
           )}
         </Stack>
-      </Paper>
+      </Paper> <Box
+      sx={{
+        mt: 6,
+        pt: 2,
+        borderTop: "1px solid",
+        borderColor: "divider",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <Footer />
+    </Box>
     </Box>
   );
 };

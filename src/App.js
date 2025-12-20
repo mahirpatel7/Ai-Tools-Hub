@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box } from "@mui/material";
 import AppLayout from "./layouts/AppLayout";
 import HomePage from "./pages/HomePage";
 
@@ -10,6 +11,11 @@ import RandomJokeTool from "./tools/fun/RandomJokeTool";
 
 // ✅ ADD THIS IMPORT
 import RouteTracker from "./components/RouteTracker";
+
+// Privacy Policy Pages
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -28,6 +34,11 @@ function App() {
 
           {/* Fun Tools */}
           <Route path="/main/RandomJoke" element={<RandomJokeTool />} />
+
+          {/* Privacy Policy Routes */}
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </Router>
