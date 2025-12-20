@@ -23,9 +23,6 @@ const QRGeneratorTool = () => {
     const canvas = document.querySelector("#qr-code-canvas");
     if (!canvas) return;
 
-    // existing logic…
-    const pngUrl = canvas.toDataURL("image/png");
-
     // ✅ download event
     if (window.gtag) {
       window.gtag("event", "download_clicked", {
