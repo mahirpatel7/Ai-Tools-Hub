@@ -10,3 +10,8 @@
   command = "npm start"   # how to start your dev server
   targetPort = 3000       # CRA runs on 3000
   port = 8888             # Netlify Dev will proxy on http://localhost:8888
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
